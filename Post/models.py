@@ -29,7 +29,7 @@ class Postview(models.Model):
      def __str__(self):
         return self.user.username
 
-class like(models.Model):
+class Like(models.Model):
     post = models.ForeignKey(Post_m, on_delete=models.CASCADE)
     # user = models.ForeignKey()
 
