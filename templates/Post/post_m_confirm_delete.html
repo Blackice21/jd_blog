@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}
+    list
+{% endblock title %}
+
+{% block content %}
+    <h1>Are you sure you want to delete this post? </h1>
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit">confirm</button>
+    </form>
+{% endblock content %}
