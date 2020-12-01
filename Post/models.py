@@ -23,6 +23,18 @@ class Post_m(models.Model):
     def get_absolute_url(self):
         return reverse("detail", kwargs={'slug':self.slug})
 
+    @property
+    def get_comment_count(self):
+        return self.comment_set.all().count()
+
+    @property
+    def get_like_count(self):
+        return self.like_set.all().count()    
+
+    @property
+    def get_postview_count(self):
+        return self.postview_set.all().count()            
+
 class Comment(models.Model):
     post = models.ForeignKey(Post_m, on_delete=models.CASCADE)
     timestamp = models.DateTimeField(auto_now_add=True)
