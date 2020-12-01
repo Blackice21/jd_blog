@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.shortcuts import reverse
 
 # Create your models here.
 class User(AbstractUser):
@@ -18,6 +19,9 @@ class Post_m(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse("detail", kwargs={'slug':self.slug})
 
 class Comment(models.Model):
     post = models.ForeignKey(Post_m, on_delete=models.CASCADE)
