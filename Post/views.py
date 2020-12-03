@@ -11,6 +11,12 @@ class Post_mDetailView(DetailView):
     model = Post_m
     success_url = '/'
 
+    def get_object(self, **kwargs):
+        object = super().get_object(**kwargs)
+        if self.request.user.is_authenticated:
+            Postview.objects.get_or_create(user = self.request.user, post=object)
+        return object
+        
 class Post_mCreateView(CreateView):
     model = Post_m
     form_class = PostForm

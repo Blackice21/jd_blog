@@ -23,7 +23,8 @@ from Post.views import (
     Post_mDeleteView,
     Post_mCreateView,
     Post_mUpdateView,
-    Like_post
+    Like_post,
+  
 )
 
 urlpatterns = [
@@ -34,7 +35,7 @@ urlpatterns = [
     path('<slug>/detail/', Post_mDetailView.as_view(), name='detail'),
     path('<slug>/update/', Post_mUpdateView.as_view(), name='update'),
     path('<slug>/delete/', Post_mDeleteView.as_view(), name='delete'),
-    path('<slug>/like/', Like_post, name='like')
+    path('<slug>/like/', Like_post, name='like'),
 ]
 
 if settings.DEBUG:

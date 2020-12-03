@@ -12,9 +12,9 @@
                 <img src="{{ object.thumbnail.url }}" class="card-img-top" alt="...">
                 <hr/>
                 <div>
-                <span><i class="fas fa-thumbs-up ml-2"></i>{{ object.get_comment_count }}</span>
-                <span><i class="fas fa-eye ml-2"></i>{{ object.get_like_count }}</span>
-                <span><i class="far fa-comment ml-2"></i>{{ object.get_postview_count }}</span>
+                <span><i class="far fa-comment ml-2 "></i>{{ object.get_comment_count }}</span>
+                <span><i class="fas fa-thumbs-up ml-2"></i>{{ object.get_like_count }}</span>
+                <span><i class="fas fa-eye ml-2"></i>{{ object.get_postview_count }}</span>
                 <span class="float-right">{{object.pub_date|timesince}} ago</span>
                 </div>
                 <hr />
