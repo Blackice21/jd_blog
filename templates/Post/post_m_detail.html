@@ -9,6 +9,12 @@
         <div class="col-4 offset-4">
             <div class="card style=padding:10px;">
                 <h1 class="text-center">{{object.title|title}}</h1>
+                {% if request.user == object.author %}
+                <div class="row">
+                    <a class="offset-2" href="{% url 'update' object.slug %}"><h3>update</h3></a>
+                    <a class="offset-3" href="{% url 'delete' object.slug %}"><h3>delete</h3></a>
+                </div>
+                {% endif %}
                 <hr />
                 <img src="{{ object.thumbnail.url }}" class="card-img-top" alt="...">
                 <hr/>
@@ -50,7 +56,8 @@
                         {% endfor %}
                     </div>
                 {% else %}
-                    <a class="btn btn-primary" href="#">Login</a>
+                    <a class="btn btn-primary" href="{% url 'account_login' %}">Login</a>
+            
                 {% endif %}
             </div>
         </div>        

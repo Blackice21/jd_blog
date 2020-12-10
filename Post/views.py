@@ -45,6 +45,7 @@ class Post_mCreateView(CreateView):
    
 class Post_mDeleteView(DeleteView):
     model = Post_m
+    success_url = '/'
 
 class Post_mUpdateView(UpdateView):
     model = Post_m 
