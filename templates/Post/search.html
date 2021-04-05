@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}
+    list
+{% endblock title %}
+
+{% block content %}
+    <div class=container>
+        <h1 class='text-center'>Check out the posts!</h1>
+        <div class="row">
+            {% if search_post %}
+            {% for object in search_post %}
+            <div class="col-4" >
+                <div class="card" style="width: 18rem;">
+                    <img src="{{ object.thumbnail.url }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <a href="{{ object.get_absolute_url }}"><h5 class="card-title">{{object.title|title}}</h5> </a>
+                        <p class="card-text">{{object.content|truncatechars:5}}</p>
+                        <span><i class="fas fa-thumbs-up ml-2"></i>{{ object.get_comment_count }}</span>
+                        <span><i class="fas fa-eye ml-2"></i>{{ object.get_like_count }}</span>
+                        <span><i class="far fa-comment ml-2"></i>{{ object.get_postview_count }}</span>
+                        <p class="card-text">{{object.pub_date|timesince}} ago</p>
+                    </div>
+                </div>
+            </div>  
+            {% endfor %}
+            {% else %}
+        <h2>No related matches!</h2>
+            {% endif %}
+        </div>
+    </div>
+{% endblock content %}

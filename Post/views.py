@@ -64,3 +64,12 @@ def Like_post(request, slug):
         return redirect('detail', slug=slug)
     Like.objects.create(user=request.user, post=post)
     return redirect('detail', slug=slug)
+
+def search(request):
+    post = Post_m.objects
+    keywords = request.GET['keywords']
+    if keywords:
+        search_post = post.filter(title__icontains=keywords)
+        return render(request, 'Post/search.html', {'search_post': search_post, 'keywords': keywords})
+    else:
+        return redirect('list')
