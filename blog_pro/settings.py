@@ -146,6 +146,6 @@ LOGIN_REDIRECT_URL = "/"
 
 # local settings for server
 try:
-    from .local_setting import *
+    from .local_settings import *
 except ImportError:
     pass
