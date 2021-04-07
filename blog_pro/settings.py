@@ -143,3 +143,9 @@ AUTHENTICATION_BACKENDS = [
 SITE_ID = 1
 AUTH_USER_MODEL =  'Post.User'
 LOGIN_REDIRECT_URL = "/"
+
+# local settings for server
+try:
+    from .local_setting import *
+except ImportError:
+    pass

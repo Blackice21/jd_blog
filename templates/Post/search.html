@@ -4,10 +4,10 @@
 {% endblock title %}
 
 {% block content %}
-    <div class=container>
+   
         <h1 class='text-center'>Check out the posts!</h1>
+        {% if search_post %}
         <div class="row">
-            {% if search_post %}
             {% for object in search_post %}
             <div class="col-4" >
                 <div class="card" style="width: 18rem;">
@@ -23,9 +23,9 @@
                 </div>
             </div>  
             {% endfor %}
+        </div>    
             {% else %}
-        <h2>No related matches!</h2>
+        <h2 class='text-center'>No related matches!</h2>
             {% endif %}
-        </div>
-    </div>
+    
 {% endblock content %}
