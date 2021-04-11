@@ -1,7 +1,6 @@
 .bg {
     background-image: url('bg_imgblue.jpg');
     background-repeat: no-repeat;
-    background-size: 19in 400px ;
+    background-size: 100% 400px ;
     background-position-y: 1in;
-    
 }
