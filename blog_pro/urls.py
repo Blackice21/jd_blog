@@ -32,7 +32,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
     path('', Post_mListView.as_view(), name='list'),
-    path('create/', Post_mCreateView.as_view(), name='create'),
+    path('create/', Post_mCreateView, name='create'),
     path('<slug>/detail/', Post_mDetailView.as_view(), name='detail'),
     path('<slug>/update/', Post_mUpdateView.as_view(), name='update'),
     path('<slug>/delete/', Post_mDeleteView.as_view(), name='delete'),

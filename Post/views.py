@@ -4,6 +4,10 @@ from .models import Post_m, Like, Comment, User, Postview
 from .forms import PostForm, CommentForm
 # Create your views here:
 
+def sample_view(request):
+    current_user = request.user
+    print (current_user.first_name)
+
 class Post_mListView(ListView):
     model = Post_m
 
@@ -33,15 +37,20 @@ class Post_mDetailView(DetailView):
             Postview.objects.get_or_create(user = self.request.user, post=object)
         return object
         
-class Post_mCreateView(CreateView):
-    model = Post_m
-    form_class = PostForm
-    success_url = '/'
+def Post_mCreateView(request):
+    if request.method == 'GET':    
+        form = PostForm(initial={'author':request.user.id})
+        return render(request, 'Post/post_m_form.html',{'form':form})
+    else:
+        form = PostForm(request.POST,request.FILES,initial={'author':request.user.id})
+        if form.is_valid():
+            form.save()
+            return redirect('list')
+        else:
+            form = PostForm(initial={'author':request.user.id})
+            return render(request, 'Post/post_m_form.html',{'form':form})
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['view_type'] = 'create'
-        return context
+    
    
 class Post_mDeleteView(DeleteView):
     model = Post_m
